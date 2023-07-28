@@ -27,16 +27,16 @@ removeTrack(){
 renderAction(){
     if(this.props.isRemoval){
 
-        return{
-            <button className="Track-action" onClick=(this.removeTrack)>  -  </button>
-        };
+        return(
+            <button className="Track-action" onClick={this.removeTrack}>  -  </button>
+        );
 
         
     }
-    return{
-        <button className="Track-action" onClick=(this.addTrack)>  +  </button>
+    return(
+        <button className="Track-action" onClick={this.addTrack}>  +  </button>
 
-    };
+    );
 }
 
 
@@ -44,8 +44,23 @@ render(){
     return(
 
         <div className="Track">
+        <div className="Track-information">
+            <h3>{this.props.track.name}</h3>
+            <p>{this.props.track.artist}  |  {this.props.track.album}
+            </p>
+            <iframe
+                src = {"https://open.sportify.com/embed/track" + this.props.track.id}
+                width= "300"
+                height="80"
+                frameborder= "0"
+                allowtransparency="true"
+                allow="encrypted-media"
+                title="preview"
+                />
+            
+        </div>
+        {this.renderAction()}
 
-        <div
         </div>
     );
 }

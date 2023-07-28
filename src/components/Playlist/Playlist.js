@@ -31,22 +31,19 @@ class PlayList extends React.Component{
     
     render(){
         return (
-           <div className="TrackList">
-           {this.props.track.map(track => {
-            
-            return (
-                <Track
-                track ={track}
-                key ={track.id}
-                onAdd = {this.props.onAdd}
-                isRemoveal = {this.props.isRemoval}
-                onRemove = {this.props.onRemove}
-                
-         />
+           <div className="PlayList">
+            <input onChange={this.handleNameChange} defaultValue={'New Playlist'}/>
+            <TrackList track={this.props.PlayListTrack}
+               isRemoval={true}
+               onRemove={this.props.onRemove}/>
+
+               <button className="Playlist-save" onClick={this.props.onSave}> Save to Spotify  </button>
+
+
            );
             
             
-         } ) }
+         
           </div>
         );
     }
@@ -54,4 +51,4 @@ class PlayList extends React.Component{
 
 }
 
-export default TrackList;
+export default PlayList;
