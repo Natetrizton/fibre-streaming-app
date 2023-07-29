@@ -16,16 +16,17 @@ const Spotify={
            const expiresIn=Number(expiresInMatch[1]);
            window.setTimeout(()=> (accessToken=""),expiresIn * 1000);
            windows.history.pushState("Access Token", null, "/");
-           returnaccessToken;
+           return accessToken;
+
         }else{
-            const accessUrl = "https://account.spotify.com/authorize?client_id=${clientid}&response_type=token&scope=playlist-modify-public&redirect_url=${redirectUri}";
-            window.location =accessUrl;
+            const accessUrl = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&scope=playlist-modify-public&redirect_url=${redirectUri}`;
+            window.location = accessUrl;
         }
         
     },
     search(term){
         const accessToken= Spotify.getAccessToken();
-        return fetch("https://api.spotify.com/v1/search?type=track&g=${term)",{
+        return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`,{
       headers:{
                 Authorization: `Bearer ${accessToken}`
 
@@ -36,9 +37,7 @@ const Spotify={
         }).then(response =>  {
             return response.json();
 
-        })
-        .then(jsonResponse => {
-               return response.json();  
+       
         })
         .then(jsonResponse =>  {
 
@@ -64,7 +63,7 @@ const Spotify={
             return;
         }
         const accessToken = Spotify.getAccessToken();
-        const headers = {Authorization: 'Bearer ${accessToken}'};
+        const headers = {Authorization: `Bearer ${accessToken}`};
 
         let userId;
 
