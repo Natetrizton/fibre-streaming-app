@@ -37,7 +37,7 @@ render(){
     return(
 
         <div className="SearchBar">
-        <input         placeholder="Enter song, album or artist"    onChange={this.handleTermChange}           onKeyUp={this.handeEnter}    />
+        <input         placeholder="Enter song, album or artist"    onChange={this.handleTermChange}  onKeyUp={this.handeEnter}    />
         <button className="SearchButton" onClick={this.search}>
         SEARCH
         </button>
